@@ -1,9 +1,15 @@
 def rotate(nums, k,sol = 'fast'):
     
-    '''slice the rotated array'''
+    '''my lovely solution (beats 97%) -- get an array to be rotated.
+    
+                            A note for me:
+    ( k = k -n ) is faster than ( k -= n ) according to leetcode runtime estimation
+    '''
     if sol == 'fast':
-        nums = nums[-k:] + nums[:-k]
-        return nums
+        n = len(nums)
+        while k>len(nums): 
+            k = k -n
+        nums[:] = nums[-k:] + nums[:-k]
 
     '''slice by the last element one by one'''
     else:
